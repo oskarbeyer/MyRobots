@@ -33,9 +33,6 @@ public class FnlBot extends AdvancedRobot {
 					&& getBattleFieldHeight() - getY() > 50) {
 				inderWand = false;
 			}
-//			for (int i = 0; i < 10; i++) {
-//				setTurnRadarRight(25);
-//			}
 			if (getRadarTurnRemaining() == 0.0) {
 				setTurnRadarLeft(360);
 			}
@@ -54,12 +51,7 @@ public class FnlBot extends AdvancedRobot {
 	}
 
 	public void onScannedRobot(ScannedRobotEvent e) {
-//		double winkel = getRadarHeading() - getGunHeading();
-//		if (winkel < 0) {
-//			turnGunLeft(winkel * -1);
-//		} else {
-//			turnGunRight(winkel);
-//		}
+
 		double winkelgegner = e.getBearing();
 		setTurnRight(winkelgegner + 90);
 		double absoluterWinkelGegner = getHeading() + e.getBearing();
