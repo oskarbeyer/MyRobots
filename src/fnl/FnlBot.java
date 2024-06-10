@@ -60,8 +60,8 @@ public class FnlBot extends AdvancedRobot {
 		}
 		double absoluterWinkelGegner = getHeading() + e.getBearing();
 		setTurnGunRight(normalRelativeAngleDegrees(absoluterWinkelGegner - getGunHeading()));
-		setTurnRadarRight(normalRelativeAngleDegrees(absoluterWinkelGegner - getRadarHeading()));
-//		System.out.println("Absolute Winkel: " + Math.abs(absoluterWinkelGegner));
+		double relativerWinkelGun = normalRelativeAngleDegrees(absoluterWinkelGegner - getRadarHeading());
+		setTurnRadarRight(relativerWinkelGun);
 		if (Math.abs(normalRelativeAngleDegrees(absoluterWinkelGegner - getGunHeading())) < 4) {
 			if (e.getDistance() <= 200) {
 				setFire(3);
@@ -71,7 +71,7 @@ public class FnlBot extends AdvancedRobot {
 				setFire(1);
 			}
 		}
-		if (normalRelativeAngleDegrees(absoluterWinkelGegner - getRadarHeading()) == 0) {
+		if (relativerWinkelGun == 0) {
 			scan();
 		}
 	}
